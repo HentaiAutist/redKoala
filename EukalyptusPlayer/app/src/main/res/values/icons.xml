@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="icon_play">@drawable/play</drawable>
+    <drawable name="icon_pause">@drawable/pause</drawable>
+    <drawable name="icon_three_dots">@drawable/three_dots</drawable>
+
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="adapter_background_width">285dp</dimen>
+    <dimen name="adapter_background_height">60dp</dimen>
+    <dimen name="adapter_image">60dp</dimen>
+    <dimen name="adapter_text_size">12sp</dimen>
+    <dimen name="adapter_small_text_size">10sp</dimen>
+    <dimen name="adapter_text_width">120dp</dimen>
+    <dimen name="adapter_text_height">20dp</dimen>
+    <dimen name="adapter_small_text_height">15dp</dimen>
+    <dimen name="adapter_margin_bottom">10dp</dimen>
+
+
+</resources>

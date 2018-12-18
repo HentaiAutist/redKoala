@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/adapter_margin_bottom"
+    >
+
+    <View android:layout_width="@dimen/adapter_background_width" android:layout_height="@dimen/adapter_background_height"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorAccent"
+        />
+
+    <ImageView
+        android:id="@+id/cmImage"
+        android:layout_width="@dimen/adapter_image"
+        android:layout_height="@dimen/adapter_image"
+        android:src="@drawable/default_music_image"
+
+        android:layout_alignParentTop="true" android:layout_toStartOf="@+id/cmAuthor"
+        android:layout_marginEnd="10dp"/>
+
+    <TextView android:layout_width="@dimen/adapter_text_width" android:layout_height="@dimen/adapter_text_height"
+        android:id="@+id/cmName"
+        android:text="BBBBBBBB"
+        android:textSize="@dimen/adapter_text_size"
+        android:textStyle="bold"
+        android:maxLines="1"
+        android:textAlignment="textStart"
+        android:textColor="@color/colorTextAccent"
+        android:paddingTop="3dp"
+        android:layout_toStartOf="@+id/cmPlay_Pause"
+        />
+
+    <TextView android:layout_width="@dimen/adapter_text_width" android:layout_height="@dimen/adapter_small_text_height"
+        android:id="@+id/cmAuthor"
+        android:text="AAAAAAAA"
+        android:maxLines="1"
+        android:textColor="@color/colorTextAccent"
+        android:textSize="@dimen/adapter_small_text_size"
+        android:layout_below="@+id/cmName"
+        android:layout_toStartOf="@+id/cmPlay_Pause"
+
+        />
+
+
+    <ImageView android:layout_width="50dp"
+        android:layout_height="@dimen/adapter_image"
+        android:id="@+id/cmPlay_Pause"
+        android:src="@drawable/icon_play"
+        android:layout_marginRight="10dp"
+        android:layout_toStartOf="@+id/cmDots"
+        android:layout_toLeftOf="@+id/cmDots"
+
+        />
+    <ImageView android:layout_width="27dp"
+        android:layout_height="@dimen/adapter_image"
+        android:id="@+id/cmDots"
+        android:src="@drawable/icon_three_dots"
+        android:layout_alignParentEnd="true" android:layout_alignParentTop="true"
+/>
+
+
+</RelativeLayout>
