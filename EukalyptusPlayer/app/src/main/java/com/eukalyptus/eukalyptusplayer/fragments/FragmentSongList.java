@@ -1,24 +1,22 @@
 package com.eukalyptus.eukalyptusplayer.fragments;
 
 import android.annotation.SuppressLint;
-import android.app.SearchManager;
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.eukalyptus.eukalyptusplayer.MainActivity;
 import com.eukalyptus.eukalyptusplayer.R;
 import com.eukalyptus.eukalyptusplayer.adapters.SongListAdapter;
+import com.eukalyptus.eukalyptusplayer.interfaces.SongListOnClick;
 import com.eukalyptus.eukalyptusplayer.objects.MusicItem;
 
 import java.util.ArrayList;
@@ -62,7 +60,17 @@ public class FragmentSongList extends Fragment {
         listView = (RecyclerView) view.findViewById(R.id.recycler_view);
         mLayoutManager = new LinearLayoutManager(view.getContext());
         listView.setLayoutManager(mLayoutManager);
-        adapter = new SongListAdapter(getActivity(),currentPlay,backgroundImage);
+        adapter = new SongListAdapter(getActivity(), currentPlay, backgroundImage, new SongListOnClick() {
+            @Override
+            public void playNewSong() throws RemoteException {
+                ((MainActivity)getActivity()).playNewSong();
+            }
+
+            @Override
+            public boolean playingCheck() {
+                return ((MainActivity)getActivity()).checkPlaying();
+            }
+        });
 
         listView.setAdapter(adapter);
 

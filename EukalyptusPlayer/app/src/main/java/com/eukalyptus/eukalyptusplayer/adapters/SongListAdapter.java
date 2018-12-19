@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory;
 import android.os.RemoteException;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.eukalyptus.eukalyptusplayer.R;
+import com.eukalyptus.eukalyptusplayer.interfaces.SongListOnClick;
 import com.eukalyptus.eukalyptusplayer.objects.MusicItem;
 import com.eukalyptus.eukalyptusplayer.service.MusicService;
 import com.eukalyptus.eukalyptusplayer.utils.StorageUtil;
@@ -27,6 +29,7 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.MyView
     public static ArrayList<MusicItem> musicList;//List of music
     private static ArrayList<MusicItem> musicListFiltered;
     private int mDataset;
+    private SongListOnClick serviceManager;
 
     private ImageView backgroundImage;
 
@@ -34,8 +37,6 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.MyView
     private ImageView Pause_img;
 
     private int audioIndex = -1;
-
-    private MusicService service;
 
     @Override
     public Filter getFilter() {
@@ -90,10 +91,11 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.MyView
 
 
 
-    public SongListAdapter(Context context, ArrayList<MusicItem> arrayList, ImageView  img) {
+    public SongListAdapter(Context context, ArrayList<MusicItem> arrayList, ImageView  img, SongListOnClick songListOnClick) {
         this.context = context;
         lInflater = (LayoutInflater) this.context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.serviceManager = songListOnClick;
         this.musicList = arrayList;
         this.musicListFiltered = arrayList;
         backgroundImage = img;
@@ -124,8 +126,7 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.MyView
         vh.Play_Pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                changePlay_Pause(Integer.parseInt(String.valueOf(view.getTag())), view, service.isPlay());
+                changePlay_Pause(Integer.parseInt(String.valueOf(view.getTag())), view, serviceManager.playingCheck());
             }
         });
 
@@ -188,7 +189,7 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.MyView
         return musicListFiltered.size();
     }
 
-    public void changePlay_Pause(int tag, View v, boolean ispng) {    //, boolean ispng, ImageView mcPlay
+    public void changePlay_Pause(int tag, View v, boolean ispng) {    // ImageView mcPlay
         if (!ispng) {
 //           backgroundImage.setImageBitmap(GlobalVar.songList.get(GlobalVar.Tag).getImage())
             StorageUtil storage = new StorageUtil(context);
@@ -205,8 +206,10 @@ public class SongListAdapter extends RecyclerView.Adapter<SongListAdapter.MyView
                     storage.storeAudio(musicListFiltered);
                     storage.storeAudioIndex(tag);
                     try {
-                        service.playNew();
-                    } catch (RemoteException e) {
+//                        service.playNew();
+                        Log.e("DDDDDD", "DDDDDDDDDDDDDDDD");
+                        serviceManager.playNewSong();
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     prevPause_img.setImageResource(R.drawable.icon_play);

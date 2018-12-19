@@ -11,6 +11,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.IBinder;
+import android.os.RemoteException;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
@@ -26,9 +27,8 @@ import com.eukalyptus.eukalyptusplayer.service.MusicService;
 import java.util.ArrayList;
 
 
-//volum pilya pause skache do full
-//як працюе дж сан
-//юзати сервіс в іншому класі
+//volum pislya pause skache do full
+// https://stackoverflow.com/questions/41870136/android-mediaplayer-start-called-in-state-1-error-38-0
 public class MainActivity extends AppCompatActivity {
     public static final String Broadcast_PLAY_NEW_AUDIO = "com.eukalyptus.eukalyptusplayer.PlayNewAudio";
 
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         MainMenuFragment mf = new MainMenuFragment(currentPlay,backgroundImage);
         fm.beginTransaction().replace(R.id.layout_fragment,mf).commit();
         //play the first audio in the ArrayList
-        playAudio(currentPlay.get(0).getData());
+        playAudio();
 
 
     }
@@ -132,7 +132,16 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-    private void playAudio(String media) {
+
+    public void playNewSong() throws RemoteException {
+        player.playNew();
+    }
+
+    public boolean checkPlaying(){
+        return player.isPlay();
+    }
+
+    private void playAudio() {
         //Check is service is active
         if (!serviceBound) {
             //Store Serializable audioList to SharedPreferences

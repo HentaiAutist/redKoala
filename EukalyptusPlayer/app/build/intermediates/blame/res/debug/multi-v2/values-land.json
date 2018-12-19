@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Roman\\Desktop\\EukalyptusPlayer\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
+            "outputFile": "C:\\Users\\Samsung 2017\\Documents\\GitHub\\redKoala\\EukalyptusPlayer\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Roman\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\0039ff85f864b51fda1e022e964bf610\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Samsung 2017\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0.aar\\263343b98fbbdcb4c9c32490406f4ce8\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Roman\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\680daf50a27011a1116b8c580b3a6a2c\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Samsung 2017\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0.aar\\5e1a530ac44101e10b124585538f7a53\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",

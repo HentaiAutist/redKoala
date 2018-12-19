@@ -593,20 +593,20 @@ public class MusicService extends Service implements MediaPlayer.OnCompletionLis
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-//        try {
-//            //Load data from SharedPreferences
-//            StorageUtil storage = new StorageUtil(getApplicationContext());
-//                currentPlay = storage.loadAudio();
-//                audioIndex = storage.loadAudioIndex();
-//            if (audioIndex != -1 && audioIndex < currentPlay.size()) {
-//                //index is in a valid range
-//                activeAudio = currentPlay.get(audioIndex);
-//            } else {
-//                stopSelf();
-//            }
-//        } catch (NullPointerException e) {
-//            stopSelf();
-//        }
+        try {
+            //Load data from SharedPreferences
+            StorageUtil storage = new StorageUtil(getApplicationContext());
+                currentPlay = storage.loadAudio();
+                audioIndex = storage.loadAudioIndex();
+            if (audioIndex != -1 && audioIndex < currentPlay.size()) {
+                //index is in a valid range
+                activeAudio = currentPlay.get(audioIndex);
+            } else {
+                stopSelf();
+            }
+        } catch (NullPointerException e) {
+            stopSelf();
+        }
 
         //Request audio focus
         if (requestAudioFocus() == false) {
